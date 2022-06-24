@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row" >
+            <div class="col mb-3 ">
+                <h5 class="card-title">CONSUMIDOR</h5>
+            </div>
+             <div class="col mb-3 d-flex justify-content-end" >
+                 <a class="col-3  btn btn-dark "  href="/">atras </a>
+             </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Chanel</th>
+                    <th scope="col">Message</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            {{#each canales }}
+            <tbody>
+                <tr>
+                    <th scope="row">{{data.chanal}}</th>
+                    <td>{{data.message}}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-3">
+                                <a class="btn btn-danger" href="delete-chanel/{{id}}">Eliminar</a>
+                            </div>
+                            <div class="col-3">
+                                <a class="btn btn-primary" href="edit-chanel/{{id}}">Actualizar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+    </div>
+</div>

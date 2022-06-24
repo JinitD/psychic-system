@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-body">
+        <div class="mb-3">
+            <h5 class="card-title">Actualizar</h5>
+        </div>
+        <form action="/update-chanel/{{canal.id}}" method="post">
+            <div class="mb-3">
+                <input type="text" class="form-control" name="chanal" placeholder="Chanal" autofocus required
+                    value="{{canal.data.chanal}}">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" name="message" placeholder="Message" required
+                    value="{{canal.data.message}}">
+            </div>
+            <div class="row gap-5 mb-3 justify-content-center" style="align-items: ;">
+                <button class="col-3  btn btn-success ">
+                    update
+                </button>
+                <a class="col-3  btn btn-dark " href="/consumer">
+                    cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
