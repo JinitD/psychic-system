@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const consumer = require('../mq/consumer');
+
 //initializations   
 const app = express();
 
@@ -22,7 +23,6 @@ app.set('view engine', '.hbs');
 
 //Midelware
 app.use(morgan('dev'));
-app.use(express.urlencoded({extends: false}));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
@@ -41,6 +41,6 @@ app.use(express.static(path.join(__dirname,'public')))
 
 //Star server
 app.listen(app.get('port'), () => {
-    console.log('Server en el puerto', app.get('port'));
+    console.log('servidor arriba');
 });
 

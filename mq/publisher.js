@@ -1,25 +1,27 @@
 const amqp = require('amqplib/callback_api');
 
-function public(chanal, message){
-const rbUrl ='amqps://pbjcrrkp:ZgBwP_nYhVcPnFj3eisgDZQCsXHmSuNo@rat.rmq2.cloudamqp.com/pbjcrrkp';
+function public(chanal, message) {
+    const rbUrl = process.env.RBURL;
 
 
-    amqp.connect(rbUrl,(err,connection)=>{
-        if(err){
+    amqp.connect(rbUrl, (err, connection) => {
+        if (err) {
             throw err;
         }
-        connection.createChannel((err,channel)=>{
-            if(err){
+        connection.createChannel((err, channel) => {
+            console.log("Publicar activo");
+            if (err) {
                 throw err;
             }
             let queueName = "canal";
-            channel.assertQueue(queueName,{
+            channel.assertQueue(queueName, {
                 durable: false
             });
-            channel.sendToQueue(queueName,Buffer.from(JSON.stringify({chanal,message})));
-            setTimeout(()=>{
+            channel.sendToQueue(queueName, Buffer.from(JSON.stringify({ chanal, message })));
+            setTimeout(() => {
                 connection.close();
-            },1000);
+            }, 1000);
+            console.log(queueName, Buffer.from(JSON.stringify({ chanal, message })))
         })
     })
 }
